@@ -1,0 +1,343 @@
+@import './variables.module.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-plus.scss';
+@import './sidebar.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial,
+    sans-serif;
+}
+
+.el-select-v2 {
+  width: 100%;
+}
+.nesting-table {
+  border: none !important;
+  padding: 10px !important;
+  overflow: hidden !important;
+}
+.gauge-clear {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.no-border {
+  border: none !important;
+}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+
+select::-ms-expand {
+  display: none;
+}
+
+.hover_hand:hover {
+  cursor: pointer;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+* {
+  touch-action: pan-y;
+}
+#app {
+  height: 100%;
+  overflow: hidden;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ' ';
+    clear: both;
+    height: 0;
+  }
+}
+
+.main-container {
+  display: flex;
+}
+// * card 卡片样式
+.card {
+  box-sizing: border-box;
+  padding: 10px;
+  overflow-x: hidden;
+  background-color: var(--el-fill-color-blank);
+  border: 1px solid var(--el-border-color-light);
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgb(0 0 0 / 5%);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.flex-wrap {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.flex-list {
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.flex-hc,
+.h-ct {
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  .home-bg {
+    width: 70%;
+    margin-bottom: 20px;
+    height: 100%;
+  }
+}
+
+.flex-space-between {
+  justify-content: space-between;
+}
+
+.flex-space-around {
+  justify-content: space-around;
+}
+
+.flex-start {
+  align-content: flex-start;
+}
+
+.flex-vc,
+.v-ct {
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.el-form-item {
+  margin-right: 28px !important;
+}
+
+.flex-end {
+  align-items: flex-end;
+}
+.el-form-item__label {
+  font-weight: 700;
+}
+
+.clear {
+  clear: both;
+}
+
+.search {
+  .el-card__body {
+    padding-top: 20px;
+    padding-bottom: 0;
+  }
+  .el-form-item {
+    padding: 0 0 20px 0;
+  }
+}
+
+.layout {
+  min-width: 1200px;
+}
+
+.el-main {
+  box-sizing: border-box;
+  padding: 10px 12px !important;
+  background-color: #f0f2f5;
+  .container-box {
+    padding-bottom: 10px;
+  }
+  &::-webkit-scrollbar {
+    background-color: #f0f2f5;
+  }
+}
+.el-container {
+  width: 100%;
+  height: 100%;
+  .el-header {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 55px;
+    padding: 0 15px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f1f1f1;
+    :deep(.tool-bar-ri) {
+      .toolBar-icon,
+      .username {
+        color: var(--el-text-color-primary);
+      }
+    }
+  }
+}
+.el-tab-pane,
+.el-tabs {
+  height: 100% !important;
+  .el-tabs__header {
+    margin: 0 !important;
+  }
+  .el-tabs__content {
+    height: 95% !important;
+  }
+}
+
+// * table-box 表格页面样式
+.table,
+.table-box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+
+  // table-search 表格搜索样式
+  .table-search {
+    padding: 18px 18px 0;
+    margin-bottom: 10px;
+    .el-form {
+      .el-input,
+      .el-select,
+      .el-cascader,
+      .el-date-editor--timerange,
+      .el-date-editor--datetimerange,
+      .el-date-editor--daterange {
+        width: 100%;
+      }
+
+      // 去除时间选择器上下 padding
+      .el-range-editor.el-input__wrapper {
+        padding: 0 10px;
+      }
+
+      // el-select 为多选时不换行显示
+      .el-select__tags {
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+    .operation {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-bottom: 18px;
+    }
+  }
+
+  // 表格 header 样式
+  .table-header {
+    .header-button-lf {
+      float: left;
+    }
+    .header-button-ri {
+      float: right;
+    }
+    .el-button {
+      margin-bottom: 15px;
+    }
+  }
+
+  // el-table 表格样式
+  .el-table {
+    flex: 1;
+
+    // 修复 safari 浏览器表格错位 https://github.com/HalseySpicy/Geeker-Admin/issues/83
+    table {
+      width: 100%;
+    }
+    .el-table__header th {
+      min-width: 100%;
+      height: 45px;
+      font-weight: bold;
+      color: var(--el-text-color-primary);
+      background: var(--el-fill-color-light);
+    }
+
+    .el-table__row {
+      height: 45px;
+    }
+
+    // 设置 el-table 中 header 文字不换行，并省略
+    .el-table__header .el-table__cell > .cell {
+      white-space: nowrap;
+    }
+
+    // 解决表格数据为空时样式不居中问题(仅在element-plus中)
+    .el-table__empty-block {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      .table-empty {
+        line-height: 30px;
+      }
+    }
+
+    // table 中 image 图片样式
+    .table-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+  }
+
+  // 表格 pagination 样式
+  .el-pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+}

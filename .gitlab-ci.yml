@@ -1,0 +1,32 @@
+image: ccr.ccs.tencentyun.com/youguang/cdn-push-python:stablev-v7
+stages:
+  - compile
+  - deploy_tags_cdn
+
+variables:
+  DOCKER_AUTH_CONFIG: '{"auths": {"ccr.ccs.tencentyun.com": {"auth": "MTAwMDIyMDU3ODE2OlRKdkclVVdCUHhCJEElOEs="}}}'
+
+compile:
+  stage: compile
+  image: node:14.20
+  tags:
+    - k8s-cachePath
+  only:
+    - tags
+  script:
+    - echo "编译开始"
+    - yarn install && yarn build
+    - cp -rf /builds/platform-work/mp-11h5/dist /opt/cache/
+    - ls /opt/cache/
+
+deploy_tags_cdn:
+  stage: deploy_tags_cdn
+  tags:
+    - k8s-cachePath
+  only:
+    - tags
+  script:
+    - export environment="production"
+    - python /CDN_push.py
+    - rm -rf /opt/cache/dist
+    - ls /opt/cache/
