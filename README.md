@@ -26,7 +26,7 @@ git checkout master
 # 打包版本号 （自动生成changelog package.json自动版本号+1）
 yarn release
 # 发布 (自动上传gitlab 根据gitlab.ci 自动打标签发布)
-yarn pub 
+yarn pub
 
 ```
 
